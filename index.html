@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TYPE_SCRIPT</title>
-</head>
-<body>
-    
-    <button>Buy</button>
-
-    <script src="dist/app.js"></script>
-</body>
+  </head>
+  <body>
+    <form action="" class="container">
+      <label for="name">Task</label>
+      <input type="text" id="name" placeholder="Enter Task" />
+      <ul class="categories">
+      </ul>
+      <button>Add</button>
+      <p>Todo:</p>
+      <ul class="tasks"></ul>
+    </form>
+    <script type="module" src="dist/app.js"></script>
+  </body>
 </html>

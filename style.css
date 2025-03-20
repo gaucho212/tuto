@@ -1,0 +1,46 @@
+body {
+    background-color: #2680cf;
+}
+.container {
+    width: 30%;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+    background-color: lightblue;
+}
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    margin: 5px auto;
+    font-size: 16px;
+}
+button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    font-size: 16px;
+    background-color: #2680cf;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #2e86c1;
+    border: 1px solid black
+}
+.gym {
+    color: darkblue;
+    list-style: circle;
+}
+.hobby{
+    color:darkgoldenrod;
+}
+.work{
+    text-decoration: underline;
+}
+li{
+    list-style-type: none;
+}
+ul{
+    padding: 0;
+}
