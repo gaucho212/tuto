@@ -1,9 +1,26 @@
-import { Categorie } from "../types/types";
+import { Categorie } from "../types/types.js";
+
+const handleCategoryChange = (categorie: Categorie) => {
+  if (categorie === Categorie.GENERAL) {
+    console.log("General category selected");
+  } else if (categorie === Categorie.GYM) {
+    console.log("Gym category selected");
+  } else if (categorie === Categorie.HOBBY) {
+    document.body.style.backgroundColor = "red";
+  } else if (categorie === Categorie.WORK) {
+    document.body.style.backgroundColor = "green";
+  } else if (categorie === Categorie.SOCIAL) {
+    document.body.style.backgroundColor = "yellow";
+  } else {
+    const never: never = categorie;
+    console.log(never);
+  }
+};
 
 export const render = (
   categories: Categorie[],
   categoriesContainerElement: HTMLElement,
-  inputChangeCallback: (categorie:Categorie) => void
+  inputChangeCallback: (categorie: Categorie) => void
 ) => {
   categories.forEach((categorie) => {
     const categoryElement: HTMLElement = document.createElement("li");
@@ -15,6 +32,7 @@ export const render = (
     radioIputElement.id = `category-${categorie}`;
     radioIputElement.addEventListener("change", () => {
       inputChangeCallback(categorie);
+      handleCategoryChange(categorie);
     });
 
     const LabelElement: HTMLLabelElement = document.createElement("label");

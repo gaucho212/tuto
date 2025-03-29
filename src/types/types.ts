@@ -1,7 +1,13 @@
 export interface Task {
-    title: string;
-    done: boolean;
-    categorie?: Categorie;
+  title: string;
+  done: boolean;
+  categorie?: Categorie;
 }
 
-export type Categorie = "general" | "work" | "gym" | "hobby";
+export enum Categorie {
+  GENERAL = "general",
+  WORK = "work",
+  GYM = "gym",
+  HOBBY = "hobby",
+  SOCIAL = "social",
+}

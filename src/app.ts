@@ -4,68 +4,61 @@
                 <input type="checkbox" id="task-1" name="Wyrzuc smieci">
             </li>*/
 
-import { Task,Categorie } from "./types/types";
+import { Task, Categorie } from "./types/types.js";
 import { render } from "./helpers/render-tasks-helper.js";
 import { render as renderCategorie } from "./helpers/render-categories-helper.js";
 
 const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
 
-
 let selectedCategory: Categorie;
-
-
 
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
 const addButtonElement: HTMLButtonElement = document.querySelector("button");
 const categoriesContainerElement: HTMLElement =
   document.querySelector(".categories");
 
-
-
-
-
-const categories: Categorie[] = ["general", "work", "gym", "hobby"];
+const categories: Categorie[] = [
+  Categorie.GENERAL,
+  Categorie.WORK,
+  Categorie.GYM,
+  Categorie.HOBBY,
+  Categorie.SOCIAL,
+];
 
 const tasks: Task[] = [
   {
     title: "Wyrzuc smieci",
     done: false,
-    categorie: "hobby",
+    categorie: Categorie.GENERAL,
   },
   {
     title: "Zmyj naczynia",
     done: true,
-    categorie: "gym",
+    categorie: Categorie.HOBBY,
   },
   {
     title: "Odkurz",
     done: false,
-    categorie: "work",
+    categorie: Categorie.GENERAL,
   },
 ];
 
-
-
-
-
 const addTask = (task: Task) => {
   tasks.push(task);
-  render(tasks,tasksContainerElement);
+  render(tasks, tasksContainerElement);
 };
 
-const updateSelectedCategory = (newCategory: Categorie)=>{
+const updateSelectedCategory = (newCategory: Categorie) => {
   selectedCategory = newCategory;
-} 
+};
 
 addButtonElement.addEventListener("click", (event: Event) => {
-  
   event.preventDefault();
   addTask({
     title: taskNameInputElement.value,
     done: false,
     categorie: selectedCategory,
   });
-  
 });
-renderCategorie(categories,categoriesContainerElement,updateSelectedCategory);
-render(tasks,tasksContainerElement);
+renderCategorie(categories, categoriesContainerElement, updateSelectedCategory);
+render(tasks, tasksContainerElement);

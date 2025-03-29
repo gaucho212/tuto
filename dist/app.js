@@ -3,6 +3,7 @@
                 <label for="task-1">Wyrzuc smieci</label>
                 <input type="checkbox" id="task-1" name="Wyrzuc smieci">
             </li>*/
+import { Categorie } from "./types/types.js";
 import { render } from "./helpers/render-tasks-helper.js";
 import { render as renderCategorie } from "./helpers/render-categories-helper.js";
 const tasksContainerElement = document.querySelector(".tasks");
@@ -10,22 +11,28 @@ let selectedCategory;
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const categoriesContainerElement = document.querySelector(".categories");
-const categories = ["general", "work", "gym", "hobby"];
+const categories = [
+    Categorie.GENERAL,
+    Categorie.WORK,
+    Categorie.GYM,
+    Categorie.HOBBY,
+    Categorie.SOCIAL,
+];
 const tasks = [
     {
         title: "Wyrzuc smieci",
         done: false,
-        categorie: "hobby",
+        categorie: Categorie.GENERAL,
     },
     {
         title: "Zmyj naczynia",
         done: true,
-        categorie: "gym",
+        categorie: Categorie.HOBBY,
     },
     {
         title: "Odkurz",
         done: false,
-        categorie: "work",
+        categorie: Categorie.GENERAL,
     },
 ];
 const addTask = (task) => {
