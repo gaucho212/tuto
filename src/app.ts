@@ -4,10 +4,10 @@
                 <input type="checkbox" id="task-1" name="Wyrzuc smieci">
             </li>*/
 
-import { Task, Categorie } from "./types/types.js";
+import { Categorie } from "./types/types.js";
 import { render } from "./helpers/render-tasks-helper.js";
 import { render as renderCategorie } from "./helpers/render-categories-helper.js";
-
+import { Task } from "./types/types.js";
 const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
 
 let selectedCategory: Categorie;
@@ -26,21 +26,10 @@ const categories: Categorie[] = [
 ];
 
 const tasks: Task[] = [
-  {
-    title: "Wyrzuc smieci",
-    done: false,
-    categorie: Categorie.GENERAL,
-  },
-  {
-    title: "Zmyj naczynia",
-    done: true,
-    categorie: Categorie.HOBBY,
-  },
-  {
-    title: "Odkurz",
-    done: false,
-    categorie: Categorie.GENERAL,
-  },
+  new Task("wyrzucic",false,Categorie.GENERAL),
+  new Task("odkurz",true,Categorie.HOBBY),
+  new Task("pies",false,Categorie.WORK),
+
 ];
 
 const addTask = (task: Task) => {
@@ -51,14 +40,22 @@ const addTask = (task: Task) => {
 const updateSelectedCategory = (newCategory: Categorie) => {
   selectedCategory = newCategory;
 };
+type TaskAsTuple = [string, Categorie, boolean];
+const task: TaskAsTuple = ["zrobic klatke", Categorie.GYM, false];
+const taskName = task[0];
+const taskCategory = task[1];
+const doneStatus = task[2];
+
 
 addButtonElement.addEventListener("click", (event: Event) => {
   event.preventDefault();
-  addTask({
-    title: taskNameInputElement.value,
-    done: false,
-    categorie: selectedCategory,
-  });
+  addTask(
+    new Task(taskNameInputElement.value,false,selectedCategory)
+    );
 });
 renderCategorie(categories, categoriesContainerElement, updateSelectedCategory);
 render(tasks, tasksContainerElement);
+
+const taskClass = new Task("Zmyj", true);
+console.log(taskClass);
+taskClass.logCreationDate("siyr");
